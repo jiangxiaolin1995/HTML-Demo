@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>下拉框应用</title>
+        <script type="text/javascript" src="jquery-3.1.1.js" ></script>
+
+    </head>
+    <body>
+        <div class="centent">
+            <!-- multiple 属性规定输入字段可选择多个值 -->
+            <select multiple id="select1" style="width:100px;height:160px;">
+                <option>选项1</option>
+                <option>选项2</option>
+                <option>选项3</option>
+                <option>选项4</option>
+                <option>选项5</option>
+                <option>选项6</option>
+                <option>选项7</option>
+
+            </select>
+            <div class="">
+                <span id="add">选中添加到右边</span>
+                <span id="add_all">全部添加到右边</span>
+            </div>
+        </div>
+        <div class="content">
+            <select multiple id="select2" style="width:100px;height:160px;">
+
+            </select>
+            <div class="">
+                <span id="remove">选中删除到左边</span>
+                <span id="remove_all">全部删除到左边</span>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                // $('#add').click(function(){
+                //     var $options=$('#select1 option:selected');
+                //     var $remove=$options.remove();
+                //     $remove.appendTo('#select2');
+                // });
+                // 改进后
+                $('#add').click(function(){
+                    $('#select1 option:selected').appendTo('#select2');
+                });
+                $('#add_all').click(function(){
+                    $('#select1 option').appendTo('#select2');
+                });
+                $('#select1').dblclick(function(){
+                    $('#select1 option:selected').appendTo('#select2');
+                });
+                $('#remove').click(function(){
+                    $('#select2 option:selected').appendTo('#select1');
+                });
+                $('#remove_all').click(function(){
+                    $('#select2 option').appendTo('#select1');
+                });
+                $('#select2').dblclick(function(){
+                    $('#select2 option:selected').appendTo('#select1');
+                });
+            });
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多行文本框改变大小</title>
+		<script type="text/javascript" src="jquery-3.1.1.js" ></script>
+	</head>
+	<body>
+		<form>
+			<div class="msg">
+				<div class="msg_caption">
+					<span class="bigger">放大</span>
+					<span class="smaller">缩小</span>
+				</div>
+				<div>
+					<textarea id="comment" rows="8" cols="20">在本教程中，您将通过教程以及许多在线实例，学到如何通过使用 jQuery 应用 JavaScript 效果。jQuery 是一个“写的更少，但做的更多”的轻量级 JavaScript 库。基本上，您将学习到如何选取 HTML 元素，以及如何对它们执行类似隐藏、移动以及操作其内容等任务。
+					</textarea>
+				</div>
+			</div>
+		</form>
+		<script>
+			$(function(){
+				var $coment=$('#comment');
+				$('.bigger').click(function(){
+					if($coment.height()<500){
+						
+//						$coment.height($coment.height() + 50);
+						$coment.animate({height:'+=50'},400);//加入动画效果
+						
+					}
+				
+				
+				});
+				$('.smaller').click(function(){
+					if($coment.height()>50){
+//						$coment.height($coment.height() - 50);
+						$coment.animate({height:'-=50'},400);
+					}
+					
+				});
+				
+				//scroTllop 不清楚怎么控制
+				$('.up').click(function(){
+					if(!$comment.is(':animated')){
+						$comment.animate({'scroTllop' : '+=50'},40);
+						
+					}
+					
+				});
+				$('.down').click(function(){
+					if(!$comment.is(':animated')){
+						$comment.animate({'scroTllop' : '-=50'},40);
+						
+					}
+					
+				});
+				
+				
+				
+				
+			});
+			
+		</script>
+	</body>
+</html>

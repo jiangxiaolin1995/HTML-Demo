@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>表单验证</title>
+
+        <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <form method="post" action="">
+            <div class="int">
+                <label for="username">用户名：</label>
+                <!-- for 属性规定 label 与哪个表单元素绑定 -->
+                <input type="text" id="username" class="required"/>
+
+            </div>
+            <div class="int">
+                <label for="email">邮箱：</label>
+                <!-- for 属性规定 label 与哪个表单元素绑定 -->
+                <input type="text" id="email" class="required"/>
+
+            </div>
+            <div class="int">
+                <label for="personinfo">个人资料：</label>
+                <!-- for 属性规定 label 与哪个表单元素绑定 -->
+                <input type="text" id="personinfo"/>
+
+            </div>
+            <div class="sub">
+                <input type="submit" value="提交" id="send">
+                <input type="reset" id="res">
+            </div>
+        </form>
+
+        <script>
+            $(function (){
+                // 添加*在input后
+                $('form :input.required').each(function() {
+                    var $required=$('<strong class="high">*</strong>');
+                    $(this).parent().append($required);
+
+                });
+                $('form :input').blur(function(event) {
+                    /* Act on the event */
+                    var $parent=$(this).parent();
+                    $parent.find('.formtips').remove();//将之前的失去焦点后添加的元素删除 否则会重复添加
+                    // 验证用户名
+                    if($(this).is('#username')){
+                        if(this.value == ''||this.value.length < 6){
+                            var errorMsg = '请至少输入6位用户名';
+                            $parent.append("<span class='formtips onError'> " + errorMsg + "</span>");
+                        }else{
+                            var okMsg='输入正确';
+                            $parent.append("<span class='formtips onSuccess'> " + okMsg + " </span>");
+                           }
+
+                    }
+                    // 验证邮箱
+                    if($(this).is('#email')){
+                        if(this.value == "" || (this.value !="" && /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(this.value))){
+                            var errorMsg = '请输入正确的邮箱地址';
+                            $parent.append("<span class='formtips onSuccess'> " + errorMsg + "</span>");
+
+                        }else{
+                            var okMsg='输入正确';
+                            $parent.append("<span class='formtips onSuccess'> " + okMsg + " </span>");
+                        }
+                    }
+
+                }).keyup(function(event) {  //使用键盘事件 达到实时提醒的功能
+                    $(this).triggerHandler('blur');
+
+                }).focus(function(event) {
+                    /* Act on the event */
+                    $(this).triggerHandler('blur');
+                });
+
+
+
+
+
+                $('#send').click(function(event) {
+                        /* Act on the event */
+                        $('form .required:input').trigger('blur');
+                        var numError = $('form .onError').length;
+                        if(numError){
+                            alert('提交不成功');
+                            return false;
+
+
+                        }
+                        alert('提交成功');
+                });
+
+            });
+        </script>
+    </body>
+</html>

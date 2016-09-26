@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>表格应用</title>
+        <script type="text/javascript" src="jquery-3.1.1.js" ></script>
+        <style media="screen">
+            .even{
+                background: #fff38f; /*偶数行样式*/
+
+            }
+            .odd{
+                background: #ffffee;/*奇数行样式*/
+            }
+            .selected{background: red;}
+        </style>
+    </head>
+    <body>
+        <!-- <table>
+            <thead>
+                <tr><th></th><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+
+            </thead>
+
+            <tbody>
+                <tr><td><input type="radio" name="name" value=""></td><td>张三</td><td>男</td><td>北京</td></tr>
+                <tr><td><input type="radio" name="name" value=""></td><td>李四</td><td>女</td><td>南京</td></tr>
+                <tr><td><input type="radio" name="name" value=""></td><td>张三</td><td>男</td><td>北京</td></tr>
+                <tr><td><input type="radio" name="name" value=""></td><td >王五</td><td>男</td><td>上海</td></tr>
+            </tbody>
+
+        </table> -->
+        <table>
+            <thead>
+                <tr><th></th><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+
+            </thead>
+
+            <tbody>
+                <tr><td><input type="checkbox" name="name" value=""></td><td>张三</td><td>男</td><td>北京</td></tr>
+                <tr><td><input type="checkbox" name="name" value=""></td><td>李四</td><td>女</td><td>南京</td></tr>
+                <tr><td><input type="checkbox" name="name" value=""></td><td>张三</td><td>男</td><td>北京</td></tr>
+                <tr><td><input type="checkbox" name="name" value=""></td><td >王五</td><td>男</td><td>上海</td></tr>
+            </tbody>
+
+        </table>
+        <script type="text/javascript">
+            $(function(){
+                // $('tbody>tr:odd').addClass('odd');
+                // $('tbody>tr:even').addClass('even');
+                //
+                // // $("tr:contains('王五')").addClass('selected');
+                // $('tbody>tr').click(function(event) {
+                //     /* Act on the event */
+                //     $(this).addClass('selected').siblings().removeClass('selected').end().find('.radio').attr('checked' , true);
+                // });
+                //当单击某行时如果已经高亮则移除高亮并去掉当前复选框的选中状态 如果没高亮则添加高亮 并选中
+                // $('tbody>tr').click(function(event) {
+                //     /* Act on the event */
+                //     if($(this).hasClass('selected')){
+                //         $(this).removeClass('selected').find(':checkbox').attr('checked' , false);
+                //
+                //     }else{
+                //         $(this).addClass('selected').find(':checkbox').attr('checked' , true);
+                //     }
+                //     改进版
+                $('tbody>tr').click(function(){
+                    //判断是否选中
+                    var hasSelectd = $(this).hasClass('selected');
+                    //如果选中则移除 selected类 否则就加上
+                });
+                });
+            })
+        </script>
+    </body>
+</html>
