@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>水平居中</title>
+        <style media="screen">
+
+        </style>
+        <script type="text/javascript" src="jquery-3.1.1.js" ></script>
+
+    </head>
+    <body>
+        <div class="msg">
+            <div class="msg_caption">
+                <span class="bigger">放大</span>
+                <span class="smaller">缩小</span>
+            </div>
+            <div>
+                <p id="para">
+
+                在本教程中，您将通过教程以及许多在线实例，学到如何通过使用 jQuery 应用 JavaScript 效果。jQuery 是一个“写的更少，但做的更多”的轻量级 JavaScript 库。基本上，您将学习到如何选取 HTML 元素，以及如何对它们执行类似隐藏、移动以及操作其内容等任务。
+                在本教程中，您将通过教程以及许多在线实例，学到如何通过使用 jQuery 应用 JavaScript 效果。jQuery 是一个“写的更少，但做的更多”的轻量级 JavaScript 库。基本上，您将学习到如何选取 HTML 元素，以及如何对它们执行类似隐藏、移动以及操作其内容等任务。
+
+                </p>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                $('span').click(function() {
+                    /* Act on the event */
+                    var thisEle=$('#para').css('font-size');
+                    var textFontSize=parseInt(thisEle , 10);
+                    var unit= thisEle.slice(-2);
+                    var cName=$(this).attr('class');
+                    if(cName=='bigger'){
+                        if(textFontSize <= 22)
+                            textFontSize += 2;
+
+
+                    }else{
+                        if(textFontSize >= 12)
+                            textFontSize -=2;
+
+                    }
+                    $('#para').css('font-size' , textFontSize + unit);
+                });
+
+            });
+
+        </script>
+    </body>
+</html>
