@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jqeury 选择器</title>
+        <script src="./jquery-3.1.1.js"></script>
+
+        <style media="screen">
+            div,span,p{
+                width: 140px;
+                height: 140px;
+                margin: 5px;
+                background: #aaa;
+                border: #000 1px solid;
+                float: left;
+                font-size: 17px;
+                font-family: Verdana;
+
+
+            }
+            div.mini{
+                width: 55px;
+                height: 55px;
+                background-color: #aaa;
+                font-size: 12px;
+            }
+            div.hide{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one" id="one">
+            id为one，class为one的div
+            <div class="mini">class为mini</div>
+        </div>
+
+        <div class="one" id="two" title="test">
+            id为two，class为one，title为test的div
+            <div class="mini" title="other">class为mini，title为other</div>
+            <div class="mini" title="test">class为mini，title为test</div>
+        </div>
+
+        <div class="one">
+            <div class="mini">class为mini</div>
+            <div class="mini">class为mini</div>
+            <div class="mini">class为mini</div>
+            <div class="mini"></div>
+        </div>
+
+        <div class="one">
+            <div class="mini">class为mini</div>
+            <div class="mini">class为mini</div>
+            <div class="mini">class为mini</div>
+            <div class="mini" title="tesst">class为mini,title为tesst</div>
+        </div>
+
+        <div class="none" style="display:none">
+            style为display为none的div
+        </div>
+
+        <div class="hide">class为hide的div</div>
+
+        <div>
+            包含input的type为hidden的div <input type="hidden" size="8">
+        </div>
+
+        <span  id="mover">正在执行动画的审判元素</span>
+
+
+
+        <script type="text/javascript">
+
+            $(function(){
+                //   基本选择器
+
+                // $('span,#two').css('background' , '#bbffaa');
+
+
+                //  层次选择器
+
+                // $('body div').css('background' , '#bbffaa');  body 后面的所有div全部选中
+
+                // $('body > div').css('background' , '#bbffaa');  紧跟在body后面的div选中
+                // 孙子元素则无效 即只对儿子元素有效
+
+                //$('.one + div').css('background' , '#bbffaa');选中 class为 one 后面紧跟的同级 div
+                //  $('.one').next('div').css('background' , '#bbffaa'); Jquery方法 同上
+
+                // $('#two ~ div').css('background' , '#bbffaa'); 选中 id 为 two 的 后面所有的同级 div 区别 上面 +
+                // $('#two').nextAll('div').css('background' , '#bbffaa'); Jquery方法 同上
+
+                //    基本过滤器
+
+                // $('div:first').css('background' , '#bbffaa'); : 前后不能有空格 若前面有空格则是层次选择器中的后代选择器 即 div :first div元素中包含的元素的 第一个 若后面有空格则无效
+                //  $('div:not(.one)').css('background' , '#bbffaa'); 选择 class 不是 one 的div
+
+                //  $('div:even').css('background' , '#bbffaa'); 选择 索引值为偶数的div 索引从0开始
+
+                //  $('div:odd').css('background' , '#bbffaa'); 选择 索引值为奇数的div 索引从0开始
+
+                // $('div:eq(5)').css('background' , '#bbffaa');  选择 索引值为5的div 索引从0开始 索引从第一个 div 开始 若有子元素 则索引加 1 即遇见一个 div 则加 1
+
+                // $('div:gt(5)').css('background' , '#bbffaa'); 选择 索引值大于 5 的div 索引从0开始 索引从第一个 div 开始 若有子元素 则索引加 1 即遇见一个 div 则加 1
+
+                // $('div:lt(5)').css('background' , '#bbffaa'); 选择 索引值小于 5 的div 索引从0开始 索引从第一个 div 开始 若有子元素 则索引加 1 即遇见一个 div 则加 1
+
+                // $(':animated').css('background' , '#bbffaa'); 选择当前正在进行动画的元素
+
+                //    内容过滤器
+
+                // $('div:contains(di)').css('background' , '#bbffaa');  选择包含文本 di 的div
+
+                //  $('div:empty').css('background' , '#bbffaa');选择不包含子元素的 div 文本元素也算 即 里面什么都没有
+
+                //  $("div:has('.mini')").css('background' , '#bbffaa'); 选择 含有class 为 mini的 div
+
+                //  $('div:parent').css('background' , '#bbffaa');  选择含有子元素的（包括文本元素）的 div
+
+                //可见性过滤选择器
+
+                //  $('div:visible').css('background' , '#bbffaa'); 选择所有可见的div
+
+                // $('div:hidden').show(3000); 显示隐藏的div
+
+                //  属性过滤器
+
+                //  $('div[title]').css('background' , '#bbffaa'); 选择含有属性 title 的 div
+
+                // $('div[title=test]').css('background' , '#bbffaa'); 选择含有属性title且属性值为 test 的 div
+
+                // $('div[title!=test]').css('background' , '#bbffaa'); 选择属性title值不是test的 div
+
+                // $('div[title^=te]').css('background' , '#bbffaa'); 选择属性title的值 是以 te 开头的 div
+
+                // $('div[title$=est]').css('background' , '#bbffaa'); 选择属性title的值是以 est结尾的 div
+
+                // $('div[title*=es]').css('background' , '#bbffaa'); 选择属性title的值中含es 的div
+
+                // $('div[id][title*=es]').css('background' , '#bbffaa'); 选择含有属性 id 和 属性title 且title的值含有es 的 div
+
+                //   子元素过滤器
+
+                // $('div.one :nth-child(2)').css('background' , '#bbffaa'); 选择class 为one的第二个子元素 index从1开始增加
+
+                // $('div.one :first-child').css('background' , '#bbffaa');选择class 为one的第 1 个子元素
+
+                // $('div.one :last-child').css('background' , '#bbffaa');选择class 为one的最后 1 个子元素
+
+                $('div.one :only-child').css('background' , '#bbffaa'); 选择只有一个子元素的div 且 class 为 one
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            })
+
+        </script>
+    </body>
+</html>
