@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>选择器注意事项</title>
+        <script src="./jquery-3.1.1.js"></script>
+    </head>
+    <body>
+        <!-- <div id="id#b">
+            bb
+        </div>
+
+        <div id="id[1]">
+            cc
+
+        </div> -->
+
+        <div class="test">
+            <div style="display:none">aa</div>
+            <div style="display:none">bb</div>
+            <div style="display:none">cc</div>
+            <div class="test" style="display:none">dd</div>
+            <div class="test" style="display:none">ee</div>
+            <div class="test" style="display:none">ff</div>
+
+        </div>
+
+
+
+        <script>
+            // $('#id\\#b');
+            // $('#id\\[1\\]')
+
+            var $t_a = $('.test :hidden');
+            var $t_b = $('.test:hidden');
+            var len_a = $t_a.length;
+            var len_b = $t_b.length;
+            alert(" $('.test :hidden') = " + len_a);
+            alert(" $('.test:hidden') = " + len_b);
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>点击显示更多效果</title>
+        <script src="./jquery-3.1.1.js"></script>
+        <style media="screen">
+            .SubCategoryBox{
+                height: 250px;
+                width: 400px;
+                border: black 1px solid;
+            }
+            .SubCategoryBox ul li{
+                float: left;
+                list-style: none;
+                margin: 5px;
+
+            }
+            .SubCategoryBox ul li i{
+                display: inline;
+            }
+            .SubCategoryBox :after{
+                content: '';
+                display: block;
+                clear: both;
+
+            }
+            .showmore{text-align: center}
+        </style>
+    </head>
+    <body>
+        <div class="SubCategoryBox">
+            <ul>
+                <li><a href="#">1</a><i>(323423)</i></li>
+                <li><a href="#">2</a><i>(323423)</i></li>
+                <li><a href="#">3</a><i>(323423)</i></li>
+                <li><a href="#">4</a><i>(323423)</i></li>
+                <li><a href="#">5</a><i>(323423)</i></li>
+                <li><a href="#">6</a><i>(323423)</i></li>
+                <li><a href="#">7</a><i>(323423)</i></li>
+                <li><a href="#">8</a><i>(323423)</i></li>
+                <li><a href="#">9</a><i>(323423)</i></li>
+                <li><a href="#">0</a><i>(323423)</i></li>
+                <li><a href="#">其他品牌</a><i>(323423)</i></li>
+
+            </ul>
+            <div class="showmore">
+                <a href="#l"><span>显示全部品牌</span></a>
+
+            </div>
+        </div>
+
+        <script>
+
+            $(function(){
+                // 隐藏 li index值 大于5 且不是最后一个的 li
+                var $category = $('ul li:gt(5):not(:last)');
+                $category.hide();
+
+                // 点击 显示全部 切换显示效果
+                var $toogleBtn = $('div.showmore > a ');
+                $toogleBtn.click(function(event) {
+                    if($category.is(':visible')){
+                        $category.hide(); //不可以使用Jquery自带的字母快捷方式 不清楚为什么
+                        $(this).find('span').css('background','red').text('显示全部品牌');
+                        return false;
+
+                    }else{
+                        $category.show(); //不可以使用Jquery自带的字母快捷方式 不清楚为什么
+                        $(this).find('span').css('background','red').text('精简显示品牌');
+                        return false;
+
+
+                        }
+
+                // $toogleBtn.toggle(function() {
+                //     f($category.is(':visible')){
+                //             $category.hide(); //不可以使用Jquery自带的字母快捷方式 不清楚为什么
+                //             $(this).find('span').css('background','red').text('显示全部品牌');
+                //             return false;
+                // }, function() {
+                //             $category.show();
+                //             $(this).find('span').css('background','red').text('精简显示品牌');
+                //             return false;
+                // });
+
+
+                });
+
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
